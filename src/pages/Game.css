@@ -1,9 +1,0 @@
-.board {
-  max-width: 75vw;
-  margin: 0 auto;
-  margin-top: 20vh;
-}
-
-div .board-item:hover {
-  cursor: pointer;
-}

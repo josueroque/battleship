@@ -1,0 +1,9 @@
+.board {
+  max-width: 40vw;
+  margin-top: 3vh;
+  margin-left: 10vw;
+}
+
+div .board-item:hover {
+  cursor: pointer;
+}
