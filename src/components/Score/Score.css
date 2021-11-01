@@ -1,0 +1,8 @@
+.game-score {
+  margin-top: 5vh;
+}
+
+.score-alert {
+  margin-top: 10vh;
+  max-width: 30vw !important;
+}

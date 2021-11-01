@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "../../components/Navigation";
-import Board from "../../components/Board";
+import Board from "../../components/Board/Board";
+import Score from "../../components/Score/Score";
+import Grid from "@mui/material/Grid";
 import { shipTypes } from "./resources";
 import "./Game.css";
 
@@ -10,9 +12,14 @@ function getRndInteger(min, max) {
 }
 export default function Game() {
   const [ships, setShips] = useState([]);
+  const [failedShoots, setFailedShoots] = useState(0);
+  const [totalTries, setTotalTries] = useState(0);
+  const [leftShoots, setLeftShoots] = useState(0);
+  const [sunkenShips, setSunkenShips] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
-    setPositions();
+    if (ships.length === 0) setPositions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -69,10 +76,6 @@ export default function Game() {
 
     if (!occupied) {
       occupiedCells.push(...verifiedCells);
-      // ships.push({ type: lenght, cells: verifiedCells });
-      /* if (ships.length > 0) {
-        setShips([...ships, { type: lenght, cells: verifiedCells }]);
-      } else setShips([{ type: lenght, cells: verifiedCells }]); */
       setShips((ships) => [...ships, { type: lenght, cells: verifiedCells }]);
     }
 
@@ -82,7 +85,30 @@ export default function Game() {
   return (
     <>
       <Navigation className='game-menu' />
-      <Board />
+      <Grid container spacing={10}>
+        <Grid item xs={6}>
+          <Board
+            setTotalTries={setTotalTries}
+            setFailedShoots={setFailedShoots}
+            setLeftShoots={setLeftShoots}
+            setSunkenShips={setSunkenShips}
+            setShips={setShips}
+            setShowAlert={setShowAlert}
+            className='game-board'
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Score
+            className='game-score'
+            totalTries={totalTries}
+            failedShoots={failedShoots}
+            leftShoots={leftShoots}
+            sunkenShips={sunkenShips}
+            showAlert={showAlert}
+            ships={ships}
+          ></Score>
+        </Grid>
+      </Grid>
     </>
   );
 }

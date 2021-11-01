@@ -1,4 +1,17 @@
 .game-menu {
   margin: 0 auto !important;
-  max-width: 70vw;
+  max-width: 90vw;
 }
+.game-board {
+  margin: 0 auto !important;
+  max-width: 45vw !important;
+}
+
+/* .game-menu-board {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container > .game-menu-board-child {
+  align-self: auto;
+} */
