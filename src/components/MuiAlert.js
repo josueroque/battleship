@@ -1,9 +1,9 @@
 import React from "react";
 import Alert from "@mui/material/Alert";
-const MuiAlert = () => {
+const MuiAlert = ({ severity, message }) => {
   return (
-    <Alert severity='success' color='info'>
-      This is a success alert — check it out!
+    <Alert severity={severity} color={severity}>
+      {message}
     </Alert>
   );
 };

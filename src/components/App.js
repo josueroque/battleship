@@ -1,16 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Game from "../pages/Game";
+import Settings from "../pages/Settings";
 function App() {
   return (
     <Router>
       <Switch>
+        {/* <Route exact path='/history' component={History} /> */}
         <Route exact path='/game' component={Game} />
-        {/*         <Route exact path='/characters' component={Characters} />
-        <Route exact path='/characters/:id' component={CharacterDetail} />
-        <Route exact path='/charactercomics/:id' component={List} />
-        <Route exact path='/characterstories/:id' component={List} />
-        <Route exact path='/' component={Home} />
- */}{" "}
+        <Route exact path='/settings' component={Settings} />
       </Switch>
     </Router>
   );

@@ -2,10 +2,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { margin } from "@mui/system";
+import SettingsIcon from "@mui/icons-material/Settings";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import HistoryIcon from "@mui/icons-material/History";
 
 export default function Navigation() {
   const [value, setValue] = React.useState(0);
@@ -19,9 +18,9 @@ export default function Navigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label='JUGAR' icon={<RestoreIcon />} />
-        <BottomNavigationAction label='CONFIGURACION' icon={<FavoriteIcon />} />
-        <BottomNavigationAction label='REGISTROS' icon={<LocationOnIcon />} />
+        <BottomNavigationAction label='CONFIGURAR' icon={<SettingsIcon />} />
+        <BottomNavigationAction label='JUGAR' icon={<SportsEsportsIcon />} />
+        <BottomNavigationAction label='REGISTROS' icon={<HistoryIcon />} />
       </BottomNavigation>
     </Box>
   );

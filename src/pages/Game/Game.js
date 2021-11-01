@@ -20,6 +20,10 @@ export default function Game() {
   const [shootsLeft, setShootsLeft] = useState(100);
   const [sunkenShips, setSunkenShips] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState({
+    text: "",
+    severity: "warning",
+  });
 
   useEffect(() => {
     if (ships.length === 0) setPositions();
@@ -86,11 +90,11 @@ export default function Game() {
   };
   return (
     <>
-      <Navigation className='game-menu' />
-
       <Typography variant='h3' className='game-title'>
-        BATTLESHIP
+        Battleship!
       </Typography>
+
+      <Navigation className='game-menu' />
 
       <Grid container spacing={10}>
         <Grid item xs={6}>
@@ -103,6 +107,8 @@ export default function Game() {
             setShowAlert={setShowAlert}
             setUsedCells={setUsedCells}
             setSuccessfulShoots={setSuccessfulShoots}
+            setMessage={setMessage}
+            message={message}
             successfulShoots={successfulShoots}
             totalTries={totalTries}
             failedShoots={failedShoots}
@@ -124,6 +130,7 @@ export default function Game() {
             occupiedCells={occupiedCells}
             successfulShoots={successfulShoots}
             ships={ships}
+            message={message}
           ></Score>
         </Grid>
       </Grid>

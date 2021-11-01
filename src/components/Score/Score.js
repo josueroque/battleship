@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import "./Score.css";
 import MuiAlert from "../MuiAlert";
 const Score = (props) => {
-  useEffect(() => {}, []);
+  console.log(props.message);
   return (
     <div className='game-score'>
       <Typography>Total Intentos: {props.totalTries} </Typography>
@@ -13,7 +13,10 @@ const Score = (props) => {
       <Typography>Barcos Hundidos: {props.sunkenShips} </Typography>
       {props.showAlert ? (
         <div className='score-alert'>
-          <MuiAlert />
+          <MuiAlert
+            message={props.message.text}
+            severity={props.message.severity}
+          />
         </div>
       ) : null}
     </div>
