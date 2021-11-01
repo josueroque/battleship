@@ -5,6 +5,7 @@ import Score from "../../components/Score/Score";
 import Grid from "@mui/material/Grid";
 import { shipTypes } from "./resources";
 import "./Game.css";
+import { Typography } from "@mui/material";
 
 const occupiedCells = [];
 function getRndInteger(min, max) {
@@ -12,9 +13,11 @@ function getRndInteger(min, max) {
 }
 export default function Game() {
   const [ships, setShips] = useState([]);
+  const [usedCells, setUsedCells] = useState([]);
   const [failedShoots, setFailedShoots] = useState(0);
-  const [totalTries, setTotalTries] = useState(0);
-  const [leftShoots, setLeftShoots] = useState(0);
+  const [successfulShoots, setSuccessfulShoots] = useState(0);
+  const [totalTries, setTotalTries] = useState(100);
+  const [shootsLeft, setShootsLeft] = useState(100);
   const [sunkenShips, setSunkenShips] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -81,19 +84,32 @@ export default function Game() {
 
     return !occupied;
   };
-  console.log(ships);
   return (
     <>
       <Navigation className='game-menu' />
+
+      <Typography variant='h3' className='game-title'>
+        BATTLESHIP
+      </Typography>
+
       <Grid container spacing={10}>
         <Grid item xs={6}>
           <Board
             setTotalTries={setTotalTries}
             setFailedShoots={setFailedShoots}
-            setLeftShoots={setLeftShoots}
+            setShootsLeft={setShootsLeft}
             setSunkenShips={setSunkenShips}
             setShips={setShips}
             setShowAlert={setShowAlert}
+            setUsedCells={setUsedCells}
+            setSuccessfulShoots={setSuccessfulShoots}
+            successfulShoots={successfulShoots}
+            totalTries={totalTries}
+            failedShoots={failedShoots}
+            shootsLeft={shootsLeft}
+            sunkenShips={sunkenShips}
+            usedCells={usedCells}
+            ships={ships}
             className='game-board'
           />
         </Grid>
@@ -102,9 +118,11 @@ export default function Game() {
             className='game-score'
             totalTries={totalTries}
             failedShoots={failedShoots}
-            leftShoots={leftShoots}
+            shootsLeft={shootsLeft}
             sunkenShips={sunkenShips}
             showAlert={showAlert}
+            occupiedCells={occupiedCells}
+            successfulShoots={successfulShoots}
             ships={ships}
           ></Score>
         </Grid>

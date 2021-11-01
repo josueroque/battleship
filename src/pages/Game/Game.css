@@ -7,11 +7,8 @@
   max-width: 45vw !important;
 }
 
-/* .game-menu-board {
-  display: flex;
-  flex-direction: row;
+.game-title {
+  display: block;
+  margin: 0 auto !important;
+  margin-left: 40vw !important;
 }
-
-.flex-container > .game-menu-board-child {
-  align-self: auto;
-} */
