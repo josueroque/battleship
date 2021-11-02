@@ -2,7 +2,7 @@
 
 This is a React Application for the classic board game Battleship.
 
-## To see this app in production go to this link: https://battleship.netlify.app/
+## To see this app in production go to this link: https://battleship-josue.netlify.app/
 
 ## Technologies
 
