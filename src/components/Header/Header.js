@@ -11,6 +11,7 @@ export default function Navigation(props) {
   const [value, setValue] = React.useState(0);
   React.useEffect(() => {
     if (props.itemValue) setValue(props.itemValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(props);
   return (

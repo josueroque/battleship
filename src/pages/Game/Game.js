@@ -33,6 +33,17 @@ export default function Game(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const clearGame = () => {
+    setTotalTries(parseInt(localStorage.getItem("shootsNumber")));
+    setShootsLeft(parseInt(localStorage.getItem("shootsNumber")));
+    setShips((array) => []);
+    setUsedCells((array) => []);
+    setFailedShoots(0);
+    setSunkenShips(0);
+    setSuccessfulShoots(0);
+    occupiedCells.length = 0;
+  };
+
   const setPositions = () => {
     let currentOrientation = "vertical";
 
@@ -108,6 +119,7 @@ export default function Game(props) {
             setUsedCells={setUsedCells}
             setSuccessfulShoots={setSuccessfulShoots}
             setMessage={setMessage}
+            clearGame={clearGame}
             message={message}
             successfulShoots={successfulShoots}
             totalTries={totalTries}
@@ -116,6 +128,7 @@ export default function Game(props) {
             sunkenShips={sunkenShips}
             usedCells={usedCells}
             ships={ships}
+            history={props.history}
             className='game-board'
           />
         </Grid>

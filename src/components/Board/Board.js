@@ -89,8 +89,17 @@ export default function Board(props) {
         if (props.shootsLeft - 1 >= 0)
           props.setShootsLeft(props.shootsLeft - 1);
         if (props.shootsLeft === 0 && props.totalTries !== 0) {
-          swal("Lamentablemente has perdido");
-          setDisabledBoard(true);
+          swal({
+            title: "Has perdido!",
+            text: "Deseas jugar otra partida?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willPlay) => {
+            if (willPlay) {
+              props.clearGame();
+            } else setDisabledBoard(true);
+          });
         }
 
         console.log(cellExists);

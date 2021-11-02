@@ -7,7 +7,7 @@ import {
   Container,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/Header/Header";
+import Navigation from "../../components/Header/Header";
 import "./Settings.css";
 
 const Settings = (props) => {
@@ -24,9 +24,11 @@ const Settings = (props) => {
     <>
       <div>
         <Navigation history={props.history} />
-        <Typography variant='h5' align='center' margin={2}>
-          Selecciona el nivel de dificultad
-        </Typography>
+        <div className='settings-title'>
+          <Typography variant='h5' align='center'>
+            Selecciona el nivel de dificultad
+          </Typography>
+        </div>
         <RadioGroup
           className='RadioCondition'
           value={selectedLevel}
