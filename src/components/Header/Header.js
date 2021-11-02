@@ -13,7 +13,6 @@ export default function Navigation(props) {
     if (props.itemValue) setValue(props.itemValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(props);
   return (
     <>
       <Typography variant='h3' className='game-title' align='center'>
@@ -24,7 +23,6 @@ export default function Navigation(props) {
           showLabels
           value={value}
           onChange={(event, newValue) => {
-            console.log(newValue);
             if (newValue !== props.itemValue) {
               switch (newValue) {
                 case 0:
