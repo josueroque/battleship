@@ -88,7 +88,7 @@ export default function Board(props) {
         ]);
         if (props.shootsLeft - 1 >= 0)
           props.setShootsLeft(props.shootsLeft - 1);
-        if (props.shootsLeft === 0) {
+        if (props.shootsLeft === 0 && props.totalTries !== 0) {
           swal("Lamentablemente has perdido");
           setDisabledBoard(true);
         }

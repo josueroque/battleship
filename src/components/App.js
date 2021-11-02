@@ -8,6 +8,7 @@ function App() {
         {/* <Route exact path='/history' component={History} /> */}
         <Route exact path='/game' component={Game} />
         <Route exact path='/settings' component={Settings} />
+        <Route exact path='/' component={Settings} />
       </Switch>
     </Router>
   );

@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import { shipTypes } from "./resources";
 import "./Game.css";
 import { Typography } from "@mui/material";
+import { positions } from "@mui/system";
 
 const occupiedCells = [];
 function getRndInteger(min, max) {
@@ -26,7 +27,12 @@ export default function Game() {
   });
 
   useEffect(() => {
+    console.log(occupiedCells);
     if (ships.length === 0) setPositions();
+    setTotalTries(parseInt(localStorage.getItem("shootsNumber")));
+    setShootsLeft(parseInt(localStorage.getItem("shootsNumber")));
+
+    return () => (occupiedCells.length = 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,6 +48,8 @@ export default function Game() {
         while (!condition) {
           const randomX = getRndInteger(1, shipItem.initialLimit);
           const randomY = getRndInteger(1, shipItem.initialLimit);
+          console.log(randomX);
+          console.log(randomY);
           if (
             assignSpaces(
               randomX,
@@ -88,9 +96,11 @@ export default function Game() {
 
     return !occupied;
   };
+  console.log(occupiedCells);
+  console.log(ships);
   return (
     <>
-      <Typography variant='h3' className='game-title'>
+      <Typography variant='h3' className='game-title' align='center'>
         Battleship!
       </Typography>
 

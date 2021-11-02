@@ -1,0 +1,15 @@
+.RadioCondition {
+  width: 50% !important;
+  display: grid !important;
+  margin-top: 5vh;
+  margin-left: 30%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game-title {
+  margin-left: 0vw !important;
+}
+
+.container-button {
+  margin-top: 15vh !important;
+}
