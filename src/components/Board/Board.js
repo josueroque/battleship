@@ -73,7 +73,7 @@ export default function Board(props) {
                 props.setSunkenShips(props.sunkenShips + 1);
 
                 if (props.sunkenShips + 1 === 10) {
-                  saveResult("Trinfo");
+                  saveResult("Triunfo");
                   swal("Felicidades has ganado el juego");
                   setDisabledBoard(true);
                 }

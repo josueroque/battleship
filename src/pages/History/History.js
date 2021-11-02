@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "../../components/Header/Header";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -10,9 +10,14 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./History.css";
 
-const rows = JSON.parse(localStorage.getItem("results"));
-
 const History = (props) => {
+  const [gameResults, setGameResults] = useState([]);
+
+  useEffect(() => {
+    const rows = JSON.parse(localStorage.getItem("results"));
+    if (Array.isArray(rows)) setGameResults(rows);
+  }, []);
+
   return (
     <>
       <div>
@@ -39,7 +44,7 @@ const History = (props) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows?.map((row) => (
+                {gameResults?.map((row) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
