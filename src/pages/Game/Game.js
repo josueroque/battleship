@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Navigation from "../../components/Navigation";
+import Navigation from "../../components/Header/Header";
 import Board from "../../components/Board/Board";
 import Score from "../../components/Score/Score";
 import Grid from "@mui/material/Grid";
 import { shipTypes } from "./resources";
 import "./Game.css";
-import { Typography } from "@mui/material";
-import { positions } from "@mui/system";
 
 const occupiedCells = [];
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-export default function Game() {
+export default function Game(props) {
   const [ships, setShips] = useState([]);
   const [usedCells, setUsedCells] = useState([]);
   const [failedShoots, setFailedShoots] = useState(0);
@@ -27,7 +25,6 @@ export default function Game() {
   });
 
   useEffect(() => {
-    console.log(occupiedCells);
     if (ships.length === 0) setPositions();
     setTotalTries(parseInt(localStorage.getItem("shootsNumber")));
     setShootsLeft(parseInt(localStorage.getItem("shootsNumber")));
@@ -48,8 +45,6 @@ export default function Game() {
         while (!condition) {
           const randomX = getRndInteger(1, shipItem.initialLimit);
           const randomY = getRndInteger(1, shipItem.initialLimit);
-          console.log(randomX);
-          console.log(randomY);
           if (
             assignSpaces(
               randomX,
@@ -96,15 +91,10 @@ export default function Game() {
 
     return !occupied;
   };
-  console.log(occupiedCells);
-  console.log(ships);
+
   return (
     <>
-      <Typography variant='h3' className='game-title' align='center'>
-        Battleship!
-      </Typography>
-
-      <Navigation className='game-menu' />
+      <Navigation className='game-menu' itemValue={1} history={props.history} />
 
       <Grid container spacing={10}>
         <Grid item xs={6}>

@@ -7,7 +7,7 @@ import {
   Container,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/Header/Header";
 import "./Settings.css";
 
 const Settings = (props) => {
@@ -19,13 +19,11 @@ const Settings = (props) => {
   useEffect(() => {
     localStorage.setItem("shootsNumber", shootsNumber);
   }, [shootsNumber]);
+  console.log(props.history);
   return (
     <>
-      <Typography variant='h3' className='game-title' align='center'>
-        Battleship!
-      </Typography>
       <div>
-        <Navigation />
+        <Navigation history={props.history} />
         <Typography variant='h5' align='center' margin={2}>
           Selecciona el nivel de dificultad
         </Typography>
