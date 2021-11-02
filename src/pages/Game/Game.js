@@ -36,12 +36,13 @@ export default function Game(props) {
   const clearGame = () => {
     setTotalTries(parseInt(localStorage.getItem("shootsNumber")));
     setShootsLeft(parseInt(localStorage.getItem("shootsNumber")));
-    setShips((array) => []);
-    setUsedCells((array) => []);
+    setShips(() => []);
+    setUsedCells(() => []);
     setFailedShoots(0);
     setSunkenShips(0);
     setSuccessfulShoots(0);
     occupiedCells.length = 0;
+    setPositions();
   };
 
   const setPositions = () => {

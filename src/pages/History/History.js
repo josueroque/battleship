@@ -16,7 +16,7 @@ const History = (props) => {
   return (
     <>
       <div>
-        <Navigation history={props.history} />
+        <Navigation history={props.history} itemValue={2} />
         <div className='history-title'>
           <Typography variant='h5' align='center'>
             Historial de Juego

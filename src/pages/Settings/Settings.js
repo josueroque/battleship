@@ -19,7 +19,7 @@ const Settings = (props) => {
   useEffect(() => {
     localStorage.setItem("shootsNumber", shootsNumber);
   }, [shootsNumber]);
-  console.log(props.history);
+
   return (
     <>
       <div>

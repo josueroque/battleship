@@ -73,11 +73,11 @@ export default function Board(props) {
                 props.setSunkenShips(props.sunkenShips + 1);
 
                 if (props.sunkenShips + 1 === 10) {
+                  saveResult("Trinfo");
                   swal("Felicidades has ganado el juego");
                   setDisabledBoard(true);
                 }
               }
-              console.log(props.ships);
             }
           });
         });
@@ -88,7 +88,9 @@ export default function Board(props) {
         ]);
         if (props.shootsLeft - 1 >= 0)
           props.setShootsLeft(props.shootsLeft - 1);
+
         if (props.shootsLeft === 0 && props.totalTries !== 0) {
+          saveResult("Derrota");
           swal({
             title: "Has perdido!",
             text: "Deseas jugar otra partida?",
@@ -102,7 +104,6 @@ export default function Board(props) {
           });
         }
 
-        console.log(cellExists);
         if (cellExists) {
           props.setSuccessfulShoots(props.successfulShoots + 1);
           props.setMessage({
@@ -120,9 +121,20 @@ export default function Board(props) {
       }
     }
   };
+  const saveResult = (gameResult) => {
+    const resultsHistory = JSON.parse(localStorage.getItem("results"));
+    const result = {
+      result: gameResult,
+      failedShoots: props.failedShoots,
+      sunkenShips: props.sunkenShips,
+    };
+    if (Array.isArray(resultsHistory)) {
+      resultsHistory.push(result);
+      localStorage.setItem("results", JSON.stringify(resultsHistory));
+    } else localStorage.setItem("results", JSON.stringify([result]));
+  };
 
   useEffect(() => {
-    console.log(props.message);
     if (props.message.text !== "") props.setShowAlert(true);
     setTimeout(() => {
       props.setShowAlert(false);
